@@ -38,6 +38,15 @@ typedef 数据类型 别名
 
 # 解决方法
 
+既然你没办法固定数据类型的长度，那么就由我来！
+
+```c
+typedef int int32_t;
+typedef unsigned int uint32_t
+```
+在后续的代码编写过程中，我们都使用别名`int32_t、uint32_t`来代替我们希望的数据类型长度。
+当发生了编译器改变的情况，我们只需要根据编译器类型修改这两行代码，而不是需要更改代码中所有出现`int、unsigned int`的代码！极大的增强了修改效率
+
 因此，我们从这里开始使用数据类型的typedef进行编码。我们直接使用以下typedef来代替数据类型：
 
 1. `uint8 for an unsigned data type of size 8 bits`
@@ -49,4 +58,4 @@ typedef 数据类型 别名
 7. `uint64 for an unsigned data type of size 64 bits`
 8. `int64 for a signed data type of size 64 bits`
 
-但是生活并没有那么容易！在大多数微控制器系列中，都缺少uint32_t等typedef库（它在stdint.h中定义）。在这样的平台上，我们需要使用语句sizeof（<data_type>）来计算这些数据类型的大小，然后定义typedefs。此外，我们可以有多个支持代码的微控制器-在这种情况下，我们根据代码编译的微控制器定义typedefs。不没那么难，看看吧：
+
